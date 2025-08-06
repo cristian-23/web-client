@@ -1,0 +1,57 @@
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  padding: 16px 40px 4px 12px; /* espacio a la derecha para la flecha */
+  border: 0.5px solid var(--cGold);
+  outline: none;
+  font-size: 16px;
+  border-radius: 12px;
+  background-color: var(--cHoverGold);
+  color: var(--cWhite);
+  appearance: none;
+}
+
+.select option {
+  background-color: var(--cHoverGold) !important;
+  color: var(--cBlack);
+}
+
+.select::-ms-expand {
+  display: none;
+}
+
+.label {
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  color: var(--cWhite);
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.selectWrapper:has(select:focus) .label,
+.selectWrapper:has(select option:checked:not([value=""])) .label {
+  top: 2px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--cWhite);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  color: var(--cWhite);
+  pointer-events: none;
+}
+
+.rotate {
+  transform: translateY(-50%) rotate(180deg);
+}

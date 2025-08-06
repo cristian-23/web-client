@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <style>
+    .gold-text { fill: #D4AF37; font-family: 'Arial', sans-serif; font-weight: bold; }
+    .large { font-size: 60px; }
+    .small { font-size: 20px; }
+  </style>
+  <circle cx="75" cy="75" r="70" fill="none" stroke="#D4AF37" stroke-width="2" />
+  <text x="75" y="85" text-anchor="middle" class="gold-text large">N</text>
+  <text x="75" y="110" text-anchor="middle" class="gold-text small">NOELIA</text>
+</svg>

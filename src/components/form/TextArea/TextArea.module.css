@@ -1,0 +1,36 @@
+.textareaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  padding: 16px 12px 4px 12px;
+  border: 0.5px solid var(--cGold);
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+  background-color: var(--cHoverGold);
+  color: var(--cWhite);
+  resize: vertical;
+  font-family: inherit;
+}
+
+.label {
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  color: var(--cWhite);
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Label flota al escribir o hacer focus */
+.textarea:focus + .label,
+.textarea:not(:placeholder-shown) + .label {
+  top: 2px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--cWhite);
+}

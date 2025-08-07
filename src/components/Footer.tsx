@@ -16,7 +16,7 @@ const Footer = () => {
 
         <div className="flex justify-center gap-3 sm:gap-4 md:gap-6">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/noeliaortiz.century21?igsh=MXNzYW1oajRvZGkxMA=="
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -27,7 +27,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/noeliacentury21"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"

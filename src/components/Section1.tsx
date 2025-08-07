@@ -6,7 +6,7 @@ const Section1 = () => {
   return (
     <motion.section
       id="inicio"
-      className="w-full min-h-screen flex flex-col justify-center items-center py-10 sm:py-12 md:py-16 lg:py-20"
+      className="w-full flex flex-col justify-center items-center py-10 sm:py-12 md:py-16 lg:py-20"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

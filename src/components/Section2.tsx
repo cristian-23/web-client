@@ -180,7 +180,7 @@ const Section2 = () => {
           </div>
           <div className="w-full">
             <Input
-              label="Presupuesto destinado*"
+              label="Presupuesto destinado Bs.*"
               type="number"
               name="Presupuesto_destinado"
               value={formState.Presupuesto_destinado}

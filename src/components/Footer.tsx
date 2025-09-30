@@ -38,7 +38,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/noelia-ortiz-b16639382/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -49,7 +49,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://wa.me/1234567890"
+            href="https://wa.me/59172994409?text=Hola%20quiero%20más%20información"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"

@@ -30,7 +30,7 @@ const Section1 = () => {
           <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border-2 border-[var(--cGold)]">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/EI4x9a4SnRc"
+              src="https://www.youtube.com/embed/yOKm1NjjEuM?si=6NdAMI5TdLJc94yd"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

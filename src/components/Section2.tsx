@@ -10,12 +10,13 @@ import Container from "./Container";
 const Section2 = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    whatsapp: "",
-    propertyType: "",
-    service: "",
-    message: "",
+    Nombre: "",
+    Correo_electronico: "",
+    Whatsapp: "",
+    Tipo_de_propiedad: "",
+    Servicio: "",
+    Presupuesto_destinado: "",
+    Descripcion: "",
   });
 
   const handleChange = (e: any) => {
@@ -27,7 +28,7 @@ const Section2 = () => {
 
     // Validación de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formState.email)) {
+    if (!emailRegex.test(formState.Correo_electronico)) {
       toast.error("Ingresa un correo electrónico válido");
       return;
     }
@@ -45,7 +46,7 @@ const Section2 = () => {
 
     try {
       const res = await fetch(
-        "https://formsubmit.co/cristianblancojr@gmail.com",
+        "https://formsubmit.co/noeliaortiz.c21@gmail.com",
         {
           method: "POST",
           body: formData,
@@ -58,12 +59,13 @@ const Section2 = () => {
         toast.success("Formulario enviado correctamente");
 
         setFormState({
-          name: "",
-          email: "",
-          whatsapp: "",
-          propertyType: "",
-          service: "",
-          message: "",
+          Nombre: "",
+          Correo_electronico: "",
+          Whatsapp: "",
+          Tipo_de_propiedad: "",
+          Servicio: "",
+          Presupuesto_destinado: "",
+          Descripcion: "",
         });
       } else {
         toast.error("Error al enviar el formulario. Inténtalo de nuevo.");
@@ -98,7 +100,7 @@ const Section2 = () => {
 
           <h2 className="text-[var(--cWhite)] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight mb-6 sm:mb-8 md:mb-10">
             Llena el formulario y obtén tu guía de propiedades exclusivas y
-            descubre el regalo que tengo para tí dentro del documento
+            descubre el regalo que tengo para tí dentro del correo
           </h2>
         </div>
 
@@ -112,8 +114,8 @@ const Section2 = () => {
               <Input
                 label="Nombre completo*"
                 type="text"
-                name="name"
-                value={formState.name}
+                name="Nombre"
+                value={formState.Nombre}
                 onChange={handleChange}
                 required
               />
@@ -122,8 +124,8 @@ const Section2 = () => {
               <Input
                 label="Correo electrónico*"
                 type="email"
-                name="email"
-                value={formState.email}
+                name="Correo_electronico"
+                value={formState.Correo_electronico}
                 onChange={handleChange}
                 required
               />
@@ -134,9 +136,9 @@ const Section2 = () => {
           <div className="w-full">
             <Input
               label="WhatsApp + Cód. país*"
-              type="text"
-              name="whatsapp"
-              value={formState.whatsapp}
+              type="number"
+              name="Whatsapp"
+              value={formState.Whatsapp}
               onChange={handleChange}
               required
             />
@@ -147,8 +149,8 @@ const Section2 = () => {
             <div className="w-full">
               <Select
                 label="Tipo de servicio que requieres*"
-                name="service"
-                value={formState.service}
+                name="Servicio"
+                value={formState.Servicio}
                 options={[
                   { value: "comprar", label: "Comprar" },
                   { value: "alquilar", label: "Alquilar" },
@@ -161,8 +163,8 @@ const Section2 = () => {
             <div className="w-full">
               <Select
                 label="Tipo de propiedad*"
-                name="propertyType"
-                value={formState.propertyType}
+                name="Tipo_de_propiedad"
+                value={formState.Tipo_de_propiedad}
                 options={[
                   { value: "casa", label: "Casa" },
                   { value: "departamento", label: "Departamento" },
@@ -176,13 +178,22 @@ const Section2 = () => {
               />
             </div>
           </div>
-
+          <div className="w-full">
+            <Input
+              label="Presupuesto destinado*"
+              type="number"
+              name="Presupuesto_destinado"
+              value={formState.Presupuesto_destinado}
+              onChange={handleChange}
+              required
+            />
+          </div>
           {/* Mensaje */}
           <div className="w-full">
             <TextArea
               label="¿Específicamente cómo puedo ayudarte?*"
-              name="message"
-              value={formState.message}
+              name="Descripcion"
+              value={formState.Descripcion}
               onChange={handleChange}
               required
               rows={5}

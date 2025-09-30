@@ -88,7 +88,7 @@ const Section4 = () => {
               />
             </div>
             <div className="flex-grow">
-              <blockquote className="text-[var(--cWhite)] text-base sm:text-lg md:text-xl leading-relaxed">
+              <blockquote className="text-[var(--cWhite)] text-base sm:text-lg md:text-xl leading-[100%]">
                 <span className="font-bold mb-2">“ Ana María:</span> Gracias a
                 la asesoría personalizada de Noelia, encontramos el hogar
                 perfecto para nuestra familia en crecimiento. Su atención al

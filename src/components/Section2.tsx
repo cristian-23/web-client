@@ -6,17 +6,19 @@ import Select from "./form/Select/Select";
 import TextArea from "./form/TextArea/TextArea";
 import toast from "react-hot-toast";
 import Container from "./Container";
+import axios from "axios";
 
 const Section2 = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formState, setFormState] = useState({
-    Nombre: "",
-    Correo_electronico: "",
-    Whatsapp: "",
-    Tipo_de_propiedad: "",
-    Servicio: "",
-    Presupuesto_destinado: "",
-    Descripcion: "",
+    fullName: "",
+    email: "",
+    whatsapp: "",
+    serviceType: "",
+    propertyType: "",
+    budget: "",
+    message: "",
   });
 
   const handleChange = (e: any) => {
@@ -28,7 +30,7 @@ const Section2 = () => {
 
     // Validación de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formState.Correo_electronico)) {
+    if (!emailRegex.test(formState.email)) {
       toast.error("Ingresa un correo electrónico válido");
       return;
     }
@@ -36,44 +38,47 @@ const Section2 = () => {
     setIsSubmitting(true);
     toast.loading("Enviando formulario...");
 
-    const formData = new FormData();
-    Object.entries(formState).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
-    formData.append("_captcha", "false");
-    formData.append("_template", "table");
-    formData.append("_subject", "Nuevo mensaje del formulario de tu sitio web");
-
     try {
-      const res = await fetch(
-        "https://formsubmit.co/noeliaortiz.c21@gmail.com",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await axios.post("https://drerickbelfort.com/api/contact", {
+        client: "noeliaortizc21.com",
+        // client: "cristianblancoleandro@gmail.com",
+        ...formState,
+      });
 
       toast.dismiss();
 
-      if (res?.ok) {
-        toast.success("Formulario enviado correctamente");
+      if (res.data?.success) {
+        toast.success(
+          res.data.message || "¡Tu mensaje ha sido enviado exitosamente!"
+        );
 
+        // Reiniciar el formulario
         setFormState({
-          Nombre: "",
-          Correo_electronico: "",
-          Whatsapp: "",
-          Tipo_de_propiedad: "",
-          Servicio: "",
-          Presupuesto_destinado: "",
-          Descripcion: "",
+          fullName: "",
+          email: "",
+          whatsapp: "",
+          serviceType: "",
+          propertyType: "",
+          budget: "",
+          message: "",
         });
       } else {
-        toast.error("Error al enviar el formulario. Inténtalo de nuevo.");
+        // Si el backend devuelve success=false
+        if (res.data?.data) {
+          const errores = Object.entries(res.data.data)
+            .map(([campo, mensajes]: any) => `${campo}: ${mensajes.join(", ")}`)
+            .join("\n");
+          toast.error(`Error de validación:\n${errores}`);
+        } else {
+          toast.error(res.data?.message || "Error al enviar el formulario.");
+        }
       }
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
       toast.dismiss();
-      toast.error("Hubo un error. Verifica tu conexión.");
+      console.error(error);
+      toast.error(
+        "Hubo un error al enviar. Verifica tu conexión o inténtalo de nuevo."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -94,111 +99,100 @@ const Section2 = () => {
       <Container className="text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-[var(--cGold)] text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
-            Como paso 2, completa el formulario y tendrás la guía de propiedades
-            exclusivas
+            Como paso 2, completa el formulario
           </p>
 
           <h2 className="text-[var(--cWhite)] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-tight mb-6 sm:mb-8 md:mb-10">
-            Llena el formulario y obtén tu guía de propiedades exclusivas y
-            descubre el regalo que tengo para tí dentro del correo
+            Llena el formulario y obtén un asesoramiento con una experiencia más
+            allá de la visita
           </h2>
         </div>
 
-        {/* FORMULARIO POST A FORMSUBMIT */}
+        {/* FORMULARIO POST A API */}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-4 sm:gap-5 md:gap-6 max-w-4xl mx-auto w-full">
           {/* Fila de nombre y correo */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
-            <div className="w-full">
-              <Input
-                label="Nombre completo*"
-                type="text"
-                name="Nombre"
-                value={formState.Nombre}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="w-full">
-              <Input
-                label="Correo electrónico*"
-                type="email"
-                name="Correo_electronico"
-                value={formState.Correo_electronico}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* WhatsApp */}
-          <div className="w-full">
             <Input
-              label="WhatsApp + Cód. país*"
-              type="number"
-              name="Whatsapp"
-              value={formState.Whatsapp}
+              label="Nombre completo*"
+              type="text"
+              name="fullName"
+              value={formState.fullName}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              label="Correo electrónico*"
+              type="email"
+              name="email"
+              value={formState.email}
               onChange={handleChange}
               required
             />
           </div>
+
+          {/* WhatsApp */}
+          <Input
+            label="WhatsApp + Cód. país*"
+            type="text"
+            name="whatsapp"
+            value={formState.whatsapp}
+            onChange={handleChange}
+            required
+          />
 
           {/* Fila de selects */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
-            <div className="w-full">
-              <Select
-                label="Tipo de servicio que requieres*"
-                name="Servicio"
-                value={formState.Servicio}
-                options={[
-                  { value: "comprar", label: "Comprar" },
-                  { value: "alquilar", label: "Alquilar" },
-                  { value: "inversiones", label: "Inversiones" },
-                ]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="w-full">
-              <Select
-                label="Tipo de propiedad*"
-                name="Tipo_de_propiedad"
-                value={formState.Tipo_de_propiedad}
-                options={[
-                  { value: "casa", label: "Casa" },
-                  { value: "departamento", label: "Departamento" },
-                  { value: "terreno", label: "Terreno" },
-                  { value: "oficina", label: "Oficina" },
-                  { value: "galpones", label: "Galpones" },
-                  { value: "otro", label: "Otro" },
-                ]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-          <div className="w-full">
-            <Input
-              label="Presupuesto destinado Bs.*"
-              type="number"
-              name="Presupuesto_destinado"
-              value={formState.Presupuesto_destinado}
+            <Select
+              label="Tipo de servicio que requieres*"
+              name="serviceType"
+              value={formState.serviceType}
+              options={[
+                { value: "Compra de propiedad", label: "Compra de propiedad" },
+                { value: "Alquiler", label: "Alquiler" },
+                { value: "Venta de propiedad", label: "Venta de propiedad" },
+                { value: "Inversiones", label: "Inversiones" },
+              ]}
+              onChange={handleChange}
+              required
+            />
+            <Select
+              label="Tipo de propiedad*"
+              name="propertyType"
+              value={formState.propertyType}
+              options={[
+                { value: "Casa", label: "Casa" },
+                { value: "Departamento", label: "Departamento" },
+                { value: "Terreno", label: "Terreno" },
+                { value: "Oficina", label: "Oficina" },
+                { value: "Galpón", label: "Galpón" },
+                { value: "Otro", label: "Otro" },
+              ]}
               onChange={handleChange}
               required
             />
           </div>
+
+          {/* Presupuesto */}
+          <Input
+            label="Presupuesto destinado Bs.*"
+            type="text"
+            name="budget"
+            value={formState.budget}
+            onChange={handleChange}
+            required
+          />
+
           {/* Mensaje */}
-          <div className="w-full">
-            <TextArea
-              label="¿Específicamente cómo puedo ayudarte?*"
-              name="Descripcion"
-              value={formState.Descripcion}
-              onChange={handleChange}
-              required
-              rows={5}
-            />
-          </div>
+          <TextArea
+            label="¿Específicamente cómo puedo ayudarte?*"
+            name="message"
+            value={formState.message}
+            onChange={handleChange}
+            required
+            rows={5}
+          />
 
           {/* Botón de envío */}
           <div className="mt-2 sm:mt-3 md:mt-4">

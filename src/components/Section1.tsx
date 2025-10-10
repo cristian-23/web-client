@@ -13,7 +13,7 @@ const Section1 = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}>
       <Container className="text-center">
         <p className="text-[var(--cGold)] text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 leading-[100%]">
-          Para descargar la guía de propiedades el 1er paso es mirar el video
+          1er paso mirar el video
         </p>
 
         <h1 className="text-[var(--cWhite)] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-[100%] mb-3 sm:mb-4 md:mb-6">
@@ -30,7 +30,7 @@ const Section1 = () => {
           <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border-2 border-[var(--cGold)]">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/yOKm1NjjEuM?si=6NdAMI5TdLJc94yd"
+              src="https://www.youtube.com/embed/YGVoDT6Ey_Q?si=ChrTAPOB-CBZws1z"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

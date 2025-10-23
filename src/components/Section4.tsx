@@ -26,7 +26,7 @@ const Section4 = () => {
         </h2>
 
         {/* Imagen principal con testimonial */}
-        <div className="flex flex-col mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+        {/* <div className="flex flex-col mb-10 sm:mb-12 md:mb-16 lg:mb-20">
           <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
             <Image
               alt="firstImage"
@@ -38,6 +38,17 @@ const Section4 = () => {
           <p className="text-[var(--cGold)] text-sm sm:text-base md:text-lg mt-3 ml-0 sm:ml-4 md:ml-12 text-center sm:text-left">
             Ana Paola y Marco lograron encontrar su hogar soñado.
           </p>
+        </div> */}
+          <div className="w-full sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-full mx-auto mb-20">
+          <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-xl border-2 border-[var(--cGold)]">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/g3yaJr5AUfQ"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen></iframe>
+          </div>
         </div>
 
         {/* Testimonios */}
@@ -68,7 +79,7 @@ const Section4 = () => {
           </div>
 
           {/* Testimonio 2 - Ana María */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-8 ">
+          {/* <div className="flex flex-col md:flex-row-reverse items-center gap-6 md:gap-8 ">
             <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 flex-shrink-0 relative rounded-full overflow-hidden shadow-xl">
               <Image
                 alt="AnaImage"
@@ -88,7 +99,7 @@ const Section4 = () => {
                 </span>
               </blockquote>
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
     </motion.section>

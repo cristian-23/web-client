@@ -39,7 +39,7 @@ const Section2 = () => {
     toast.loading("Enviando formulario...");
 
     try {
-      const res = await axios.post("https://drerickbelfort.com/api/contact", {
+      const res = await axios.post("https://firebrick-seahorse-100590.hostingersite.com/api/contact", {
         client: "noeliaortizc21.com",
         // client: "cristianblancoleandro@gmail.com",
         ...formState,
